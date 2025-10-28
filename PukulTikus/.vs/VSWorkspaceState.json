@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Assets",
+    "\\Assets\\Scripts",
+    "\\Assets\\Scripts\\Config",
+    "\\Assets\\Scripts\\Game",
+    "\\Assets\\Scripts\\Managers",
+    "\\Assets\\Scripts\\Moles",
+    "\\Assets\\Scripts\\Net",
+    "\\Assets\\Scripts\\UI"
+  ],
+  "SelectedNode": "\\Assets\\Scripts\\Managers\\HoleSpawner.cs",
+  "PreviewInSolutionExplorer": false
+}

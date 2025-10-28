@@ -1,0 +1,6 @@
+@PukulTikus_HostAddress = http://localhost:5222
+
+GET {{PukulTikus_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

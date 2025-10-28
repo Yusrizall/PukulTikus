@@ -1,0 +1,197 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\dto\\pagedscores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\dto\\pagedscores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\dto\\scoreupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\dto\\scoreupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\data\\gamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\data\\gamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\dto\\leaderboardentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\dto\\leaderboardentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\dto\\scoredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\dto\\scoredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\dto\\scorecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\dto\\scorecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\pukultikus.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\pukultikus.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|c:\\datas\\jaringan\\tesxaml\\pukultikus\\pukultikus\\domain\\playerscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD89DAF-27B5-4FD6-96A8-C864561077A0}|PukulTikus\\PukulTikus.csproj|solutionrelative:pukultikus\\domain\\playerscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PagedScores.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\PagedScores.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Dto\\PagedScores.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\PagedScores.cs",
+              "RelativeToolTip": "PukulTikus\\Dto\\PagedScores.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T19:02:18.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScoreUpdateDto.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreUpdateDto.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Dto\\ScoreUpdateDto.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreUpdateDto.cs",
+              "RelativeToolTip": "PukulTikus\\Dto\\ScoreUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T19:01:46.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScoresController.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Controllers\\ScoresController.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Controllers\\ScoresController.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Controllers\\ScoresController.cs",
+              "RelativeToolTip": "PukulTikus\\Controllers\\ScoresController.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAuwNYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:43:46.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\appsettings.json",
+              "RelativeDocumentMoniker": "PukulTikus\\appsettings.json",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\appsettings.json",
+              "RelativeToolTip": "PukulTikus\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-27T18:40:57.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Program.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Program.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Program.cs",
+              "RelativeToolTip": "PukulTikus\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:40:25.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LeaderboardEntryDto.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\LeaderboardEntryDto.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Dto\\LeaderboardEntryDto.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\LeaderboardEntryDto.cs",
+              "RelativeToolTip": "PukulTikus\\Dto\\LeaderboardEntryDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:36:55.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ScoreDto.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreDto.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Dto\\ScoreDto.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreDto.cs",
+              "RelativeToolTip": "PukulTikus\\Dto\\ScoreDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:36:29.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ScoreCreateDto.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreCreateDto.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Dto\\ScoreCreateDto.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Dto\\ScoreCreateDto.cs",
+              "RelativeToolTip": "PukulTikus\\Dto\\ScoreCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:36:09.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameDBContext.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Data\\GameDBContext.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Data\\GameDBContext.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Data\\GameDBContext.cs",
+              "RelativeToolTip": "PukulTikus\\Data\\GameDBContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:35:16.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PukulTikus.csproj",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
+              "RelativeDocumentMoniker": "PukulTikus\\PukulTikus.csproj",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
+              "RelativeToolTip": "PukulTikus\\PukulTikus.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-27T18:34:48.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerScore.cs",
+              "DocumentMoniker": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Domain\\PlayerScore.cs",
+              "RelativeDocumentMoniker": "PukulTikus\\Domain\\PlayerScore.cs",
+              "ToolTip": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\Domain\\PlayerScore.cs",
+              "RelativeToolTip": "PukulTikus\\Domain\\PlayerScore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T18:34:24.017Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

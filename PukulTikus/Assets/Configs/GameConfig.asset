@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66793927dc0af73488b7b6ab90b11dc0, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  gameDurationSec: 60
+  phase1: {fileID: 11400000, guid: 3ff1049daad32a742b43445de235c650, type: 2}
+  phase2: {fileID: 11400000, guid: bc775e08f2eb9a54da5ac842708ef522, type: 2}
+  phase3: {fileID: 11400000, guid: ffe100ece136efe4ca8014914459adb7, type: 2}
+  gridWidth: 4
+  gridHeight: 3
+  holePrefab: {fileID: 5802336917395381435, guid: 72094cc567be8b34a8113edb67d5bb80, type: 3}
+  moleNormalPrefab: {fileID: 8813195740567717654, guid: 9478cf8cc6bd5844c8ed66c287e746a9, type: 3}
+  moleArmoredPrefab: {fileID: 8813195740567717654, guid: 5f4197b2fa6fa9f4b9ed6da4e927145f, type: 3}
+  punishmentPrefab: {fileID: 8165987962530968633, guid: 41180bc9c75113d479ef9e79b1d662f5, type: 3}
+  gridOrigin: {x: 0, y: 0, z: 0}
+  cellSize: {x: 2, y: 2}
+  moleSpawnYOffset: 0.8
