@@ -1,0 +1,35 @@
+# =============== #
+# Unity Generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+CrashReports/
+BuildReport/
+Builds/
+sysinfo.txt
+
+# =============== #
+# IDE Specific    #
+# =============== #
+.vscode/
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+
+# =============== #
+# OS Generated    #
+# =============== #
+.DS_Store
+Thumbs.db

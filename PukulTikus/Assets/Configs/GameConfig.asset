@@ -19,8 +19,8 @@ MonoBehaviour:
   gridWidth: 4
   gridHeight: 3
   holePrefab: {fileID: 5802336917395381435, guid: 72094cc567be8b34a8113edb67d5bb80, type: 3}
-  moleNormalPrefab: {fileID: 8813195740567717654, guid: 9478cf8cc6bd5844c8ed66c287e746a9, type: 3}
-  moleArmoredPrefab: {fileID: 8813195740567717654, guid: 5f4197b2fa6fa9f4b9ed6da4e927145f, type: 3}
+  moleNormalPrefab: {fileID: 8311913736963497509, guid: 27b14fd3471233d4fbc449a6aea41133, type: 3}
+  moleArmoredPrefab: {fileID: 835970474855157756, guid: 717dd13ac2d17694ebbff969713711e0, type: 3}
   punishmentPrefab: {fileID: 8165987962530968633, guid: 41180bc9c75113d479ef9e79b1d662f5, type: 3}
   gridOrigin: {x: 0, y: 0, z: 0}
   cellSize: {x: 2, y: 2}
