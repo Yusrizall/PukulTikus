@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj": {}
+    "E:\\Kuliah\\Semester 5\\Jaringan Komputer\\Tugas 9\\Game\\PukulTikus\\Server\\PukulTikus\\PukulTikus\\PukulTikus.csproj": {}
   },
   "projects": {
-    "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj": {
+    "E:\\Kuliah\\Semester 5\\Jaringan Komputer\\Tugas 9\\Game\\PukulTikus\\Server\\PukulTikus\\PukulTikus\\PukulTikus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
+        "projectUniqueName": "E:\\Kuliah\\Semester 5\\Jaringan Komputer\\Tugas 9\\Game\\PukulTikus\\Server\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
         "projectName": "PukulTikus",
-        "projectPath": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
-        "packagesPath": "C:\\Users\\yusri\\.nuget\\packages\\",
-        "outputPath": "C:\\Datas\\jaringan\\tesxaml\\PukulTikus\\PukulTikus\\obj\\",
+        "projectPath": "E:\\Kuliah\\Semester 5\\Jaringan Komputer\\Tugas 9\\Game\\PukulTikus\\Server\\PukulTikus\\PukulTikus\\PukulTikus.csproj",
+        "packagesPath": "C:\\Users\\Napal\\.nuget\\packages\\",
+        "outputPath": "E:\\Kuliah\\Semester 5\\Jaringan Komputer\\Tugas 9\\Game\\PukulTikus\\Server\\PukulTikus\\PukulTikus\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yusri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Napal\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

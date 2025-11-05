@@ -31,6 +31,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject resumePopupRoot;
     [SerializeField] private Button btnResume;
     [SerializeField] private Button btnNewGame;
+    [Header("Keyboard Navigation")]
+    [SerializeField] private Button[] buttons; // isi di Inspector: Play, Settings, Leaderboard
+    private int currentIndex = 0;
+    private bool isPanelOpen = false;
 
     private string pendingName = "";
 
@@ -39,6 +43,63 @@ public class MainMenuManager : MonoBehaviour
     private const string KEY_VOL_SFX = "Vol_SFX";
 
     // ===== lifecycle =====
+    private void Update()
+    {
+        if (isPanelOpen ||
+            (settingsRoot && settingsRoot.activeSelf) ||
+            (leaderboardPanel && leaderboardPanel.gameObject.activeSelf) ||
+            (resumePopupRoot && resumePopupRoot.activeSelf))
+        {
+            return;
+        }
+
+        if (buttons == null || buttons.Length == 0) return;
+
+        // highlight tombol aktif
+        UpdateButtonVisuals();
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            currentIndex = (currentIndex + 1) % buttons.Length;
+            UpdateButtonVisuals();
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            currentIndex = (currentIndex - 1 + buttons.Length) % buttons.Length;
+            UpdateButtonVisuals();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (buttons[currentIndex]) buttons[currentIndex].onClick.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsRoot && settingsRoot.activeSelf) CloseSettings();
+            if (leaderboardPanel && leaderboardPanel.gameObject.activeSelf) CloseLeaderboard();
+            if (resumePopupRoot && resumePopupRoot.activeSelf) resumePopupRoot.SetActive(false);
+        }
+    }
+    private void UpdateButtonVisuals()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            var vis = buttons[i].GetComponent<MenuButtonVisual>();
+            if (vis)
+                vis.SetSelected(i == currentIndex);
+        }
+
+        if (buttons[currentIndex])
+            buttons[currentIndex].Select();
+    }
+
+    // agar main menu freeze ketika panel aktif
+    public void SetPanelOpen(bool open)
+    {
+        isPanelOpen = open;
+    }
+
     private void Awake()
     {
         ResolveRefs();
