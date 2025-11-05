@@ -10,6 +10,74 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PukulTikus.Controllers.SavesController",
+    "Method": "Upsert",
+    "RelativePath": "api/Saves",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "PukulTikus.Dto.SaveSnapshotDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PukulTikus.Dto.SaveResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PukulTikus.Controllers.SavesController",
+    "Method": "GetByName",
+    "RelativePath": "api/Saves/{playerName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playerName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PukulTikus.Dto.SaveResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PukulTikus.Controllers.SavesController",
+    "Method": "Delete",
+    "RelativePath": "api/Saves/{playerName}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playerName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PukulTikus.Controllers.ScoresController",
     "Method": "Post",
     "RelativePath": "api/Scores",

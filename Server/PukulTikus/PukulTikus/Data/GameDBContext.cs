@@ -2,41 +2,44 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PukulTikus.Domain;
 
-namespace PukulTikus.Data;
-
-public class GameDbContext : DbContext
+namespace PukulTikus.Data
 {
-    public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
-
-    public DbSet<PlayerScore> PlayerScores => Set<PlayerScore>();
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class GameDbContext : DbContext
     {
-        // 1) Buat converter: DateTimeOffset <-> long (epoch detik)
-        var createdAtConverter = new ValueConverter<DateTimeOffset, long>(
-            v => v.ToUnixTimeSeconds(),                // tulis ke DB (INTEGER)
-            v => DateTimeOffset.FromUnixTimeSeconds(v) // baca dari DB -> DateTimeOffset (UTC)
-        );
+        public GameDbContext(DbContextOptions<GameDbContext> options) : base(options) { }
 
-        // 2) Konfigurasi entity
-        var e = modelBuilder.Entity<PlayerScore>();
+        public DbSet<PlayerScore> PlayerScores => Set<PlayerScore>();
+        public DbSet<PlayerSave> PlayerSaves => Set<PlayerSave>(); // <- BARU
 
-        e.Property(p => p.PlayerName).IsRequired().HasMaxLength(20);
-        e.Property(p => p.Score).IsRequired();
-        e.Property(p => p.Kills).IsRequired();
-        e.Property(p => p.MaxCombo).IsRequired();
-        e.Property(p => p.Accuracy).IsRequired();
-        e.Property(p => p.DurationSec).HasDefaultValue(60);
-        e.Property(p => p.ValidHits).IsRequired();
-        e.Property(p => p.MissClicks).IsRequired();
-        e.Property(p => p.PunishmentHits).IsRequired();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // converter DateTimeOffset <-> INTEGER (epoch detik) untuk SQLite
+            var dtoToLong = new ValueConverter<DateTimeOffset, long>(
+                v => v.ToUnixTimeSeconds(),
+                v => DateTimeOffset.FromUnixTimeSeconds(v)
+            );
 
-        // 3) APPLY converter ke kolom CreatedAt
-        e.Property(p => p.CreatedAt)
-         .HasConversion(createdAtConverter)
-         .IsRequired();
+            // ===== PlayerScore (sudah ada) =====
+            var s = modelBuilder.Entity<PlayerScore>();
+            s.Property(p => p.PlayerName).IsRequired().HasMaxLength(20);
+            s.Property(p => p.Score).IsRequired();
+            s.Property(p => p.Kills).IsRequired();
+            s.Property(p => p.MaxCombo).IsRequired();
+            s.Property(p => p.Accuracy).IsRequired();
+            s.Property(p => p.DurationSec).HasDefaultValue(60);
+            s.Property(p => p.ValidHits).IsRequired();
+            s.Property(p => p.MissClicks).IsRequired();
+            s.Property(p => p.PunishmentHits).IsRequired();
+            s.Property(p => p.CreatedAt).HasConversion(dtoToLong).IsRequired();
+            s.HasIndex(p => new { p.Score, p.Kills, p.MaxCombo, p.CreatedAt });
 
-        // 4) Index leaderboard (tetap)
-        e.HasIndex(p => new { p.Score, p.Kills, p.MaxCombo, p.CreatedAt });
+            // ===== PlayerSave (BARU) =====
+            var e = modelBuilder.Entity<PlayerSave>();
+            e.Property(p => p.PlayerName).IsRequired().HasMaxLength(20);
+            e.HasIndex(p => p.PlayerName).IsUnique(); // satu save per nama
+
+            e.Property(p => p.CreatedAt).HasConversion(dtoToLong).IsRequired();
+            e.Property(p => p.UpdatedAt).HasConversion(dtoToLong).IsRequired();
+        }
     }
 }

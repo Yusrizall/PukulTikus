@@ -5,6 +5,113 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Saves/{playerName}": {
+      "get": {
+        "tags": [
+          "Saves"
+        ],
+        "parameters": [
+          {
+            "name": "playerName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Saves"
+        ],
+        "parameters": [
+          {
+            "name": "playerName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Saves": {
+      "post": {
+        "tags": [
+          "Saves"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSnapshotDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSnapshotDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSnapshotDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Scores": {
       "post": {
         "tags": [
@@ -409,6 +516,110 @@
             "format": "int32"
           },
           "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "playerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxCombo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "validHits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "missClicks": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "punishmentHits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hearts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phaseIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeLeftSec": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updatedAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveSnapshotDto": {
+        "type": "object",
+        "properties": {
+          "playerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxCombo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "validHits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "missClicks": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "punishmentHits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hearts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phaseIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeLeftSec": {
             "type": "integer",
             "format": "int32"
           }
