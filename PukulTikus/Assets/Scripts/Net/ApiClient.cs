@@ -65,6 +65,44 @@ public class ApiClient : MonoBehaviour
             onError
         );
     }
+    public IEnumerator PostSave(
+    PlayerSaveCreateDto dto,
+    System.Action<PlayerSaveDto> onSuccess,
+    System.Action<string> onError)
+    {
+        // Pastikan kamu sudah set baseUrl di Inspector, misal: http://localhost:5237
+        string baseUrlSafe = (baseUrl ?? "").TrimEnd('/');   // sesuaikan jika variabelmu bernama lain
+        string url = baseUrlSafe + "/api/saves";              // ganti jika route-mu beda (mis. /api/playersaves)
+
+        var json = JsonUtility.ToJson(dto);
+        var req = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+
+        yield return req.SendWebRequest();
+
+        bool ok = req.result == UnityWebRequest.Result.Success
+                  || (req.responseCode >= 200 && req.responseCode < 300);
+
+        if (!ok)
+        {
+            onError?.Invoke($"HTTP {(int)req.responseCode} {req.error}");
+            yield break;
+        }
+
+        PlayerSaveDto resp = null;
+        try
+        {
+            var txt = req.downloadHandler.text;
+            if (!string.IsNullOrEmpty(txt))
+                resp = JsonUtility.FromJson<PlayerSaveDto>(txt);
+        }
+        catch { /* ignore parse error */ }
+
+        onSuccess?.Invoke(resp);
+    }
 
     // GET /api/highscore (Top-1)
     public IEnumerator GetHighscore(Action<LeaderboardEntryDto> onSuccess, Action<string> onError)
@@ -93,6 +131,64 @@ public class ApiClient : MonoBehaviour
             onError
         );
     }
+    // ====== SAVE/RESUME ======
+    public IEnumerator GetSave(string playerName, System.Action<SaveResponseDto> onSuccess, System.Action<string> onError)
+    {
+        string url = $"{baseUrl}/api/saves/{UnityWebRequest.EscapeURL(playerName)}";
+        using var www = UnityWebRequest.Get(url);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            // 404 → tidak ada save
+            if (www.responseCode == 404) { onSuccess?.Invoke(null); yield break; }
+            onError?.Invoke($"HTTP {(int)www.responseCode} {www.error}");
+            yield break;
+        }
+
+        var json = www.downloadHandler.text;
+        var data = JsonUtility.FromJson<SaveResponseDto>(json);
+        onSuccess?.Invoke(data);
+    }
+
+    public IEnumerator PostSave(SaveSnapshotDto payload, System.Action<SaveResponseDto> onSuccess, System.Action<string> onError)
+    {
+        string url = $"{baseUrl}/api/saves";
+        string json = JsonUtility.ToJson(payload);
+
+        var body = new System.Text.UTF8Encoding().GetBytes(json);
+        using var www = new UnityWebRequest(url, "POST");
+        www.uploadHandler = new UploadHandlerRaw(body);
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.SetRequestHeader("Content-Type", "application/json");
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            onError?.Invoke($"HTTP {(int)www.responseCode} {www.error}");
+            yield break;
+        }
+
+        var resp = JsonUtility.FromJson<SaveResponseDto>(www.downloadHandler.text);
+        onSuccess?.Invoke(resp);
+    }
+
+    public IEnumerator DeleteSave(string playerName, System.Action onSuccess, System.Action<string> onError)
+    {
+        string url = $"{baseUrl}/api/saves/{UnityWebRequest.EscapeURL(playerName)}";
+        using var www = UnityWebRequest.Delete(url);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            // 404 juga dianggap selesai (tidak ada yang dihapus)
+            if (www.responseCode == 404) { onSuccess?.Invoke(); yield break; }
+            onError?.Invoke($"HTTP {(int)www.responseCode} {www.error}");
+            yield break;
+        }
+        onSuccess?.Invoke();
+    }
+
 
     // ===================== CORE FALLBACK =====================
 

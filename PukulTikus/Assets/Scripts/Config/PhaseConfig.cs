@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +25,7 @@ public class PhaseConfig : ScriptableObject
     [Range(0, 1)] public float weightNormal = 0.8f;
     [Range(0, 1)] public float weightArmored = 0.2f;
     [Range(0, 1)] public float weightPunishment = 0.0f;
+    [Range(0, 1)] public float weightHeart = 0.0f; // <-- baru
 
     public bool IsInfinite => quota < 0;
 }

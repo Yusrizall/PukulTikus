@@ -22,6 +22,12 @@ MonoBehaviour:
   moleNormalPrefab: {fileID: 8311913736963497509, guid: 27b14fd3471233d4fbc449a6aea41133, type: 3}
   moleArmoredPrefab: {fileID: 835970474855157756, guid: 717dd13ac2d17694ebbff969713711e0, type: 3}
   punishmentPrefab: {fileID: 8165987962530968633, guid: 41180bc9c75113d479ef9e79b1d662f5, type: 3}
+  heartPrefab: {fileID: 4966140302128900193, guid: 4c92b7450ce656e4c9996c5539f1f3a4, type: 3}
   gridOrigin: {x: 0, y: 0, z: 0}
   cellSize: {x: 2, y: 2}
-  moleSpawnYOffset: 0.8
+  moleSpawnYOffset: 0
+  heartsMax: 3
+  lifeLossOnMiss: 1
+  lifeLossOnPunishment: 1
+  lifeLossOnExpire: 1
+  heartHoldSeconds: 1

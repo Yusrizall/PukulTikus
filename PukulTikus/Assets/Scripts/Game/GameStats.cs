@@ -2,39 +2,52 @@
 
 public class GameStats
 {
-    public string playerName = "";
+    public string playerName = "Player";
     public int score = 0;
     public int kills = 0;
-    public int maxCombo = 0;
     public int combo = 0;
+    public int maxCombo = 0;
 
     public int validHits = 0;
     public int missClicks = 0;
     public int punishmentHits = 0;
 
-    public float Accuracy
-    {
-        get
-        {
-            int den = validHits + missClicks + punishmentHits;
-            if (den <= 0) return 0f;
-            return (float)validHits / den;
-        }
-    }
+    // Lives
+    public int heartsMax = 3;
+    public int hearts = 3;
 
-    // Multiplier: tiap 10 kill (streak), naik 0.5, cap 5x
+    // === Combo & Score ===
     public float CurrentMultiplier()
     {
-        int tier = combo / 10;          // 0..∞
-        float mult = 1f + 0.5f * tier;  // 1.0, 1.5, 2.0, ...
-        return Mathf.Clamp(mult, 1f, 5f);
+        // tiap 10 kill: +0.5; cap 5x
+        float mult = 1f + (kills / 10) * 0.5f;
+        return Mathf.Min(mult, 5f);
     }
 
-    public void OnMissGround() // klik tanah/objek non-target
+    public float Accuracy
+        => (validHits + missClicks + punishmentHits) == 0
+           ? 0f
+           : (float)validHits / (validHits + missClicks + punishmentHits);
+
+    public void OnKill()
+    {
+        kills++;
+        validHits++;
+        combo++;
+        maxCombo = Mathf.Max(maxCombo, combo);
+        score += Mathf.RoundToInt(100f * CurrentMultiplier());
+    }
+
+    public void OnHitNonKill()
+    {
+        validHits++;
+        // no score change, combo tidak reset
+    }
+
+    public void OnMissGround()
     {
         missClicks++;
-        combo = 0; // reset combo
-        // penalty -100 but clamp >= 0
+        combo = 0;
         score = Mathf.Max(0, score - 100);
     }
 
@@ -45,20 +58,14 @@ public class GameStats
         score = Mathf.Max(0, score - 200);
     }
 
-    public void OnHitNonKill() // armor break
+    public bool LoseHeart()
     {
-        validHits++;
-        // tidak tambah score; tidak reset combo
+        hearts = Mathf.Max(0, hearts - 1);
+        return hearts <= 0;
     }
 
-    public void OnKill()
+    public void GainHeart()
     {
-        validHits++;
-        kills++;
-        combo++;
-        if (combo > maxCombo) maxCombo = combo;
-
-        float m = CurrentMultiplier();
-        score += Mathf.RoundToInt(100f * m);
+        hearts = Mathf.Min(heartsMax, hearts + 1);
     }
 }

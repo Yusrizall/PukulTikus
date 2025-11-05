@@ -27,6 +27,13 @@ public class MainMenuManager : MonoBehaviour
     [Header("Config")]
     [SerializeField] private string gameSceneName = "Game";
 
+    [Header("Resume Popup")]
+    [SerializeField] private GameObject resumePopupRoot;
+    [SerializeField] private Button btnResume;
+    [SerializeField] private Button btnNewGame;
+
+    private string pendingName = "";
+
     private const string KEY_PLAYER_NAME = "PlayerName";
     private const string KEY_VOL_MUSIC = "Vol_Music";
     private const string KEY_VOL_SFX = "Vol_SFX";
@@ -69,6 +76,10 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.LogWarning("[MainMenu] btnLeaderboard belum di-assign.");
         }
+        if (btnResume) btnResume.onClick.AddListener(OnClickResume);
+        if (btnNewGame) btnNewGame.onClick.AddListener(OnClickNewGame);
+        if (resumePopupRoot) resumePopupRoot.SetActive(false);
+
     }
 
     private void Start()
@@ -141,10 +152,34 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.SetString(KEY_PLAYER_NAME, name);
         PlayerPrefs.Save();
 
-        if (!string.IsNullOrEmpty(gameSceneName))
-            SceneManager.LoadScene(gameSceneName);
-        else
-            SceneManager.LoadScene(1);
+        // Cek apakah ada save?
+        if (api)
+        {
+            pendingName = name;
+            StartCoroutine(api.GetSave(name,
+                onSuccess: (save) =>
+                {
+                    if (save != null)
+                    {
+                        // Tampilkan popup Resume
+                        if (resumePopupRoot) resumePopupRoot.SetActive(true);
+                    }
+                    else
+                    {
+                        // Tidak ada save → mulai baru
+                        LoadGameScene();
+                    }
+                },
+                onError: (err) =>
+                {
+                    Debug.LogError("[MainMenu] GetSave error: " + err);
+                    // fallback mainkan baru
+                    LoadGameScene();
+                }));
+            return;
+        }
+
+        LoadGameScene();
     }
 
     // ===== helpers =====
@@ -191,4 +226,51 @@ public class MainMenuManager : MonoBehaviour
         if (!api) api = FindObjectOfType<ApiClient>(true);
         if (!leaderboardPanel) leaderboardPanel = FindObjectOfType<LeaderboardPanel>(true);
     }
+    private void LoadGameScene()
+    {
+        if (!string.IsNullOrEmpty(gameSceneName))
+            SceneManager.LoadScene(gameSceneName);
+        else
+            SceneManager.LoadScene(1);
+    }
+
+    private void OnClickResume()
+    {
+        // Simpan flag resume di PlayerPrefs (dibaca GameManager)
+        PlayerPrefs.SetInt("ResumeRequested", 1);
+        PlayerPrefs.Save();
+        if (resumePopupRoot) resumePopupRoot.SetActive(false);
+        LoadGameScene();
+    }
+
+    private void OnClickNewGame()
+    {
+        // Optional: hapus save lama agar bersih
+        if (api && !string.IsNullOrEmpty(pendingName))
+        {
+            StartCoroutine(api.DeleteSave(pendingName,
+                onSuccess: () =>
+                {
+                    PlayerPrefs.SetInt("ResumeRequested", 0);
+                    PlayerPrefs.Save();
+                    if (resumePopupRoot) resumePopupRoot.SetActive(false);
+                    LoadGameScene();
+                },
+                onError: (err) =>
+                {
+                    Debug.LogWarning("[MainMenu] DeleteSave err: " + err);
+                    PlayerPrefs.SetInt("ResumeRequested", 0);
+                    PlayerPrefs.Save();
+                    if (resumePopupRoot) resumePopupRoot.SetActive(false);
+                    LoadGameScene();
+                }));
+            return;
+        }
+
+        PlayerPrefs.SetInt("ResumeRequested", 0);
+        PlayerPrefs.Save();
+        if (resumePopupRoot) resumePopupRoot.SetActive(false);
+        LoadGameScene();
+    }
+
 }

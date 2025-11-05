@@ -23,6 +23,7 @@ MonoBehaviour:
   lifetime: 1
   maxConcurrent: 2
   quota: 20
-  weightNormal: 0.8
+  weightNormal: 0.75
   weightArmored: 0.15
   weightPunishment: 0.05
+  weightHeart: 0.05

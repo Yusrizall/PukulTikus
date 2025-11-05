@@ -11,8 +11,6 @@ public class HoleSpawner : MonoBehaviour
     /// <summary>
     /// Membangun grid lubang 4x3 (atau sesuai config) dalam keadaan NON-AKTIF (tidak terlihat).
     /// </summary>
-    /// 
-
     public void BuildGrid()
     {
         tiles.Clear();
@@ -32,8 +30,8 @@ public class HoleSpawner : MonoBehaviour
 
                 var go = Instantiate(config.holePrefab, pos, Quaternion.identity, transform);
                 go.name = $"Hole_{x}_{y}";
-                // ⚠️ JANGAN beri Tag/Collider di sini — tile lubang hanya visual (ditoggle).
-                // Klik miss akan ditangani oleh Ground environment (Tag=Ground, punya Collider).
+                // ⚠️ Jangan beri Tag/Collider di sini — tile lubang hanya visual (ditoggle).
+                // Klik miss ditangani oleh Ground environment (Tag=Ground, punya Collider).
 
                 var tile = go.GetComponent<GridHole>();
                 if (!tile) tile = go.AddComponent<GridHole>();
@@ -82,8 +80,9 @@ public class HoleSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawn mole pada tile tertentu, dengan offset Y dari config agar tidak tertelan mesh tanah.
+    /// Spawn mole pada tile tertentu, tepat di bibir lubang (pakai spawnAnchor bila ada).
     /// </summary>
+    // ... isi file kamu yang lain biarkan
     public MoleController SpawnMole(MoleType t, Transform holeTf)
     {
         if (config == null)
@@ -97,6 +96,7 @@ public class HoleSpawner : MonoBehaviour
         {
             MoleType.Armored => config.moleArmoredPrefab,
             MoleType.Punishment => config.punishmentPrefab,
+            MoleType.Heart => config.heartPrefab,   // <- pakai heartPrefab
             _ => config.moleNormalPrefab
         };
 
@@ -115,7 +115,7 @@ public class HoleSpawner : MonoBehaviour
     }
 
     public GameConfig Config => config;
-
+    // ...
     // ===== Debug helper (opsional, klik dari Inspector menu titik tiga komponen) =====
     [ContextMenu("Debug: Count Active Holes")]
     private void DebugCountActive()
@@ -124,6 +124,42 @@ public class HoleSpawner : MonoBehaviour
         foreach (var t in tiles.Values)
             if (t && t.holeVisual && t.holeVisual.activeSelf) cnt++;
         Debug.Log($"[HoleSpawner] Active hole visuals: {cnt}");
+    }
+
+    /// <summary>
+    /// Geser objek sehingga "bagian paling bawah" (bounds.min.y) sejajar dengan targetY.
+    /// Bekerja untuk prefab dengan pivot di tengah karena memakai Renderer bounds.
+    /// </summary>
+    private static void AlignBaseToY(GameObject go, float targetY)
+    {
+        var renderers = go.GetComponentsInChildren<Renderer>();
+        if (renderers == null || renderers.Length == 0) return;
+
+        var bounds = renderers[0].bounds;
+        for (int i = 1; i < renderers.Length; i++)
+            bounds.Encapsulate(renderers[i].bounds);
+
+        float bottomY = bounds.min.y;
+        float deltaY = targetY - bottomY;
+        if (Mathf.Abs(deltaY) > 0.0001f)
+            go.transform.position += new Vector3(0f, deltaY, 0f);
+    }
+
+    public HeartPickupController SpawnHeart(Transform holeTf)
+    {
+        if (config == null || config.heartPrefab == null) return null;
+        if (holeTf == null) return null;
+
+        var pos = holeTf.position + Vector3.up * Mathf.Max(0f, config.moleSpawnYOffset);
+        var go = Instantiate(config.heartPrefab, pos, Quaternion.identity, holeTf);
+
+        var hp = go.GetComponent<HeartPickupController>();
+        if (!hp) hp = go.AddComponent<HeartPickupController>();
+
+        // (opsional) rapikan posisi supaya “dasar” heart nempel tanah
+        AlignBaseToY(go, holeTf.position.y);
+
+        return hp;
     }
 
 }

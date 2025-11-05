@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoleController : MonoBehaviour
 {
     public MoleType type;
+
     [Tooltip("Visual pelindung/armor (nyalakan hanya untuk prefab armored).")]
     public GameObject armorVisual;
 
@@ -14,7 +15,7 @@ public class MoleController : MonoBehaviour
 
     private int armor = 0;        // 1 untuk armored, 0 untuk lainnya
     private float lifetime = 1f;  // di-set saat spawn
-    private Action<MoleController, bool, bool>? onDespawn;
+    private Action<MoleController, bool, bool> onDespawn;
     // (self, killed, punishmentClicked)
 
     public void Init(MoleType t, float lt, Action<MoleController, bool, bool> onDespawnCb)
@@ -25,12 +26,13 @@ public class MoleController : MonoBehaviour
 
         armor = (type == MoleType.Armored) ? 1 : 0;
 
-        // Set tag awal sesuai tipe
+        // Tag awal sesuai tipe
         switch (type)
         {
             case MoleType.Normal: gameObject.tag = "Mole"; break;
             case MoleType.Armored: gameObject.tag = "MoleArmored"; break;
             case MoleType.Punishment: gameObject.tag = "Punishment"; break;
+            case MoleType.Heart: gameObject.tag = "Heart"; break;
         }
 
         // Sinkronkan visual armor
@@ -47,9 +49,13 @@ public class MoleController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // dipanggil saat dipukul/klik
+    // Dipanggil saat dipukul/klik
     public void Hit(Action onArmorBreakVfx = null, Action onKillVfx = null)
     {
+        // Heart tidak diklik untuk collect (hold-logic di HeartPickupController)
+        if (type == MoleType.Heart)
+            return;
+
         if (type == MoleType.Punishment)
         {
             onDespawn?.Invoke(this, false, true);
@@ -70,6 +76,13 @@ public class MoleController : MonoBehaviour
         // Sudah tidak ber-armor → kill
         onKillVfx?.Invoke();
         onDespawn?.Invoke(this, true, false);
+        Destroy(gameObject);
+    }
+
+    // Dipanggil HeartPickupController ketika hold selesai
+    public void ConsumeHeartAndDespawn()
+    {
+        onDespawn?.Invoke(this, false, false);
         Destroy(gameObject);
     }
 }

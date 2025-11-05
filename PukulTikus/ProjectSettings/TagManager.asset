@@ -8,6 +8,7 @@ TagManager:
   - MoleArmored
   - Punishment
   - Ground
+  - Heart
   layers:
   - Default
   - TransparentFX
